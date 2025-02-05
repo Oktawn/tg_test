@@ -1,15 +1,12 @@
 import { config } from "dotenv";
-import { Bot, session } from "grammy";
-config()
+import { Bot } from "grammy";
+import { menuComposer, setCommand } from "./botMenu";
+config();
 
 
 var bot = new Bot(process.env.BOT_TOKEN!.toString());
 
+bot.api.setMyCommands(setCommand);
+bot.use(menuComposer);
 
-bot.command("start", async (ctx) => {
-  await ctx.reply("Hello");
-});
-
-
-
-bot.start();
+export default bot;
