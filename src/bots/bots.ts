@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import { Bot } from "grammy";
-import { menuComposer, setCommand } from "./botMenu";
+import { menuComposer, setCommand } from "./menu";
 config();
 
 
