@@ -54,36 +54,10 @@ async function addUser(conversation: Conversation, ctx: Context) {
   var user = userRepository.create({ name: name, email: email });
   await userRepository.save(user);
   await ctx.reply("User added")
+  return;
 }
 menuComposer.use(createConversation(addUser));
 
 menuComposer.command("add", async (ctx) => {
   await ctx.conversation.enter("addUser");
 });
-
-
-
-// menuComposer.command("add", async (ctx) => {
-//   var [_, firstName, lastName, email] = ctx.message!.text!.split(" ");
-//   var fullName = `${firstName} ${lastName}`;
-
-//   if (!fullName.trim() || !email) {
-//     await ctx.reply("Invalid arguments")
-//     return;
-//   }
-//   try {
-//     var isUser = await userRepository.findOne({ where: [{ email: email }, { name: fullName.trim() }] });
-//     console.log("isUser", isUser)
-//     if (isUser) {
-//       await ctx.reply("User already exists")
-//       return;
-//     }
-//     var user = userRepository.create({ name: fullName.trim(), email: email });
-//     await userRepository.save(user);
-//     await ctx.reply("User added")
-//   } catch (error) {
-//     new Error(error);
-//     console.log(error);
-//   }
-// })
-
