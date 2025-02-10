@@ -2,18 +2,9 @@ import { dataSource } from "@/data-source";
 import { UsersEntity } from "@/entity/Users.entity";
 import { Conversation, ConversationFlavor, createConversation } from "@grammyjs/conversations";
 import { Composer, Context } from "grammy";
-
-export const setCommand = [
-  { command: "start", description: "start bot" },
-  { command: "all", description: "all commands" },
-  { command: "id", description: "my id" },
-  { command: "users", description: "show all users" },
-  { command: "statistics", description: "show count users" },
-  { command: "add", description: "add user" }
-]
+import { setCommand } from "./allCommand";
 
 var userRepository = dataSource.getRepository(UsersEntity);
-
 
 export var menuComposer = new Composer<ConversationFlavor<Context>>();
 

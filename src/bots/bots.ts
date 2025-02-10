@@ -1,17 +1,18 @@
 import { config } from "dotenv";
 import { Bot, GrammyError, HttpError, session } from "grammy";
-import { menuComposer, setCommand } from "./menu";
+import { menuComposer} from "./menu";
 import { conversations } from "@grammyjs/conversations";
+import { ttComposer } from "./tiktok.info";
+import { setCommand } from "./allCommand";
 
 config();
-
 var bot = new Bot(process.env.BOT_TOKEN as string);
 
 bot.use(session({ initial: () => ({}) }));
 bot.use(conversations());
 bot.api.setMyCommands(setCommand);
 bot.use(menuComposer);
-
+bot.use(ttComposer);
 
 bot.catch((err) => {
   const ctx = err.ctx;
