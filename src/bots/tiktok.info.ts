@@ -10,9 +10,14 @@ const userInfo = async (conversation: Conversation, ctx: Context) => {
   await ctx.reply("enter username");
   var name = (await conversation.waitFor("message")).message.text;
   try {
-    const data = await Tiktok.StalkUser(name);
-    await ctx.reply(JSON.stringify(data.result));
-
+    const data = await Tiktok.StalkUser(name,
+      {
+        cookie: process.env.MY_COOKIE,
+        postLimit: 5
+      }
+    );
+    await ctx.reply(data.result.posts.map((post) =>
+      `${post.id} - ${post.desc}`).join("\n"));
   } catch (error) {
     throw new Error(error);
   }
