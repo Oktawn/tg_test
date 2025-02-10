@@ -5,5 +5,6 @@ export var setCommand = [
   { command: "users", description: "show all users" },
   { command: "statistics", description: "show count users" },
   { command: "add", description: "add user" },
-  { command: "user_info", description: "user info from tiktok" },
+  { command: "user_stats_tiktok", description: "user statistics from tiktok" },
+  { command: "user_videos_tiktok", description: "statistics video tiktok" },
 ]

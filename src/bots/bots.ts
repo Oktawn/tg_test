@@ -1,11 +1,14 @@
 import { config } from "dotenv";
 import { Bot, GrammyError, HttpError, session } from "grammy";
-import { menuComposer} from "./menu";
+import { menuComposer } from "./menu";
 import { conversations } from "@grammyjs/conversations";
 import { ttComposer } from "./tiktok.info";
 import { setCommand } from "./allCommand";
-
+// import { SocksProxyAgent } from "socks-proxy-agent";
 config();
+
+// var agent = new SocksProxyAgent(process.env.PROXY_URL);
+
 var bot = new Bot(process.env.BOT_TOKEN as string);
 
 bot.use(session({ initial: () => ({}) }));

@@ -10,7 +10,7 @@ config();
 const PORT = process.env.PORT || 3000
 var app = express();
 var proxy = createProxyMiddleware<Request, Response>({
-  target: process.env.PROXY_URL,
+  target: process.env.PROXY_HTTP,
   changeOrigin: true,
 })
 
