@@ -4,6 +4,7 @@ import bot from "./bots/bots";
 import { dataSource } from "./data-source";
 import type { Request, Response } from 'express';
 import { createProxyMiddleware } from "http-proxy-middleware";
+import cors from 'cors';
 
 config();
 
@@ -14,9 +15,13 @@ var proxy = createProxyMiddleware<Request, Response>({
   changeOrigin: true,
 })
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+})
 
 async function main() {
   app.use(express.json());
+  app.use(cors());
   app.use(proxy);
   dataSource.initialize().then(() => {
     console.log("Data Source has been initialized!")
