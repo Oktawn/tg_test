@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@grammyjs/conversations": "^2.0.1",
-    "@tobyg74/tiktok-api-dl": "^1.2.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

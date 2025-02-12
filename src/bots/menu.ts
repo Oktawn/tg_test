@@ -13,12 +13,12 @@ menuComposer.command("start", async (ctx) => {
 })
 
 menuComposer.command("all", async (ctx) => {
-  await ctx.reply(setCommand.map((x) => `/${x.command} - ${x.description}`).join("\n"))
+  await ctx.reply(setCommand.map((x) => `/${x.command} - ${x.description}`).join("\n"));
 })
 
 menuComposer.command("id", async (ctx) => {
   await ctx.reply(`Your id: ${ctx.from!.id.toString()}`)
-})
+}) 
 
 menuComposer.command("users", async (ctx) => {
   var users = await userRepository.find();
