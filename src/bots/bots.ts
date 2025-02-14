@@ -2,13 +2,13 @@ import { config } from "dotenv";
 import { Bot, GrammyError, HttpError, session } from "grammy";
 import { conversations } from "@grammyjs/conversations";
 import { setCommand } from "./allCommand";
-import { cardsComposer } from "./HR_department";
+import { HRComposer } from "./HR_department";
 config();
 var bot = new Bot(process.env.BOT_TOKEN as string);
 
 bot.use(session({ initial: () => ({}) }));
 bot.use(conversations());
-bot.use(cardsComposer);
+bot.use(HRComposer);
 bot.api.setMyCommands(setCommand);
 
 bot.catch((err) => {
